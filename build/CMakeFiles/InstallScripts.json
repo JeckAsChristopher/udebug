@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/data/data/com.termux/files/home/udebug/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
