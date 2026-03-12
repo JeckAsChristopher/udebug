@@ -1,4 +1,4 @@
-# UDEBUG - Ultimate Debugger
+# PROCDBG - Ultimate Debugger
 
 Cross-platform process debugger supporting ELF (Linux), PE/EXE (Windows), and Mach-O (macOS).
 Works without root or Administrator access with reduced capability. Running with elevated privileges enables full memory reading, register snapshots, and string extraction.
@@ -26,28 +26,28 @@ cmake --build build --config Release
 ## Usage
 
 ```
-udebug --attach <pid|name>    Attach to a running process by PID or name
-udebug --pid    <pid>         Attach by numeric PID
-udebug --name   <name>        Attach by process name
-udebug --file   <binary>      Static parse only, no live attach
-udebug --config <path>        Load an alternate config file
-udebug --c                    Comprehensive mode (see below)
-udebug --dump-stack           Dump stack memory at RSP
-udebug --dump-heap            Dump heap memory regions
-udebug --no-color             Disable color output
-udebug --verbose              Verbose internal messages
-udebug --help                 Show help
+procdbg --attach <pid|name>    Attach to a running process by PID or name
+procdbg --pid    <pid>         Attach by numeric PID
+procdbg --name   <name>        Attach by process name
+procdbg --file   <binary>      Static parse only, no live attach
+procdbg --config <path>        Load an alternate config file
+procdbg --c                    Comprehensive mode (see below)
+procdbg --dump-stack           Dump stack memory at RSP
+procdbg --dump-heap            Dump heap memory regions
+procdbg --no-color             Disable color output
+procdbg --verbose              Verbose internal messages
+procdbg --help                 Show help
 ```
 
 **Examples**
 ```
-udebug --attach myapp
-udebug --attach 1234
-udebug --pid 5678 --dump-stack
-udebug --pid 5678 --c
-udebug --file ./program.elf
-udebug --name nginx --c
-sudo udebug --attach myapp --c
+procdbg --attach myapp
+procdbg --attach 1234
+procdbg --pid 5678 --dump-stack
+procdbg --pid 5678 --c
+procdbg --file ./program.elf
+procdbg --name nginx --c
+sudo procdbg --attach myapp --c
 ```
 
 ---
@@ -57,8 +57,8 @@ sudo udebug --attach myapp --c
 Passing `--c` runs a deep analysis of the process and prints eleven additional sections beyond the default output.
 
 ```
-udebug --pid 1234 --c
-sudo udebug --name nginx --c
+procdbg --pid 1234 --c
+sudo procdbg --name nginx --c
 ```
 
 What is collected:
@@ -82,7 +82,7 @@ What is collected:
 Default attach output:
 
 ```
-UDEBUG v1.0.0 - Ultimate Debugger  [ELF / PE / Mach-O]
+PROCDBG v1.0.0 - Process Debugger  [ELF / PE / Mach-O]
 
 == PROCESS INFO ===========================================
   PID:              1234
@@ -188,11 +188,11 @@ COMPREHENSIVE ANALYSIS
 
 ## Configuration
 
-The config file `udebug.conf` is searched in order:
+The config file `procdbg.conf` is searched in order:
 
-1. `./udebug.conf` alongside the binary
-2. `~/.config/udebug/udebug.conf`
-3. `/etc/udebug/udebug.conf`
+1. `./procdbg.conf` alongside the binary
+2. `~/.config/procdbg/procdbg.conf`
+3. `/etc/procdbg/procdbg.conf`
 4. Path given with `--config`
 
 Available options:

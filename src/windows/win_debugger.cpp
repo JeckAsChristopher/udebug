@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2025 UDEBUG Contributors
-//  UDEBUG — src/windows/win_debugger.cpp
+// Copyright (c) 2025 PROCDBG Contributors
+//  PROCDBG — src/windows/win_debugger.cpp
 //  Windows implementation:
 //    - OpenProcess(PROCESS_ALL_ACCESS) — needs admin for other users
 //    - DebugActiveProcess()             — attaches debug port
@@ -9,7 +9,7 @@
 //    - GetThreadContext()               — read CPU registers
 //    - CreateToolhelp32Snapshot()       — find process by name
 
-#ifdef UDEBUG_WINDOWS
+#ifdef PROCDBG_WINDOWS
 
 #include "win_debugger.h"
 #include <iostream>
@@ -412,4 +412,4 @@ std::unique_ptr<IDebugger> make_debugger() {
     return std::make_unique<WinDebugger>();
 }
 
-#endif // UDEBUG_WINDOWS
+#endif // PROCDBG_WINDOWS

@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2025 UDEBUG Contributors
-//  UDEBUG — src/macos/mac_debugger.cpp
+// Copyright (c) 2025 PROCDBG Contributors
+//  PROCDBG — src/macos/mac_debugger.cpp
 //  macOS implementation using Mach kernel APIs:
 //    - task_for_pid()        (needs sudo or com.apple.security.cs.debugger)
 //    - mach_vm_read_overwrite() for memory
 //    - mach_vm_region()       for memory map
 //    - thread_get_state()     for registers
 
-#ifdef UDEBUG_MACOS
+#ifdef PROCDBG_MACOS
 
 #include "mac_debugger.h"
 #include <iostream>
@@ -356,4 +356,4 @@ std::unique_ptr<IDebugger> make_debugger() {
     return std::make_unique<MacDebugger>();
 }
 
-#endif // UDEBUG_MACOS
+#endif // PROCDBG_MACOS

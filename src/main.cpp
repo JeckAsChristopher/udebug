@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2025 UDEBUG Contributors
+// Copyright (c) 2025 PROCDBG Contributors
 
-#include "udebug.h"
+#include "procdbg.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -9,7 +9,7 @@
 #include <cstring>
 #include <csignal>
 
-#ifdef UDEBUG_WINDOWS
+#ifdef PROCDBG_WINDOWS
   #include <windows.h>
   #include <tlhelp32.h>
 #else
@@ -26,14 +26,14 @@ static std::string col_str(const char* c) { return g_color ? c : ""; }
 static std::unique_ptr<IDebugger> g_dbg;
 
 static void on_signal(int) {
-    std::cout << "\n[UDEBUG] Caught signal, detaching...\n";
+    std::cout << "\n[PROCDBG] Caught signal, detaching...\n";
     if (g_dbg && g_dbg->is_attached()) g_dbg->detach();
     std::exit(0);
 }
 
 static void print_usage(const char* argv0) {
     std::cout <<
-        "\nUDEBUG v" UDEBUG_VERSION " - Ultimate Debugger\n"
+        "\nPROCDBG v" PROCDBG_VERSION " - Ultimate Debugger\n"
         "Supports ELF (Linux), PE/EXE (Windows), Mach-O (macOS).\n"
         "Works without root. Running with sudo or as Administrator gives full access.\n"
         "\nUSAGE:\n"
@@ -51,13 +51,13 @@ static void print_usage(const char* argv0) {
         "  " << argv0 << " --verbose                Verbose internal messages\n"
         "  " << argv0 << " --help                   Show this help\n"
         "\nEXAMPLES:\n"
-        "  udebug --attach myapp\n"
-        "  udebug --attach 1234\n"
-        "  udebug --pid 5678 --dump-stack\n"
-        "  udebug --pid 5678 --c\n"
-        "  udebug --file ./program.elf\n"
-        "  udebug --name nginx --c\n"
-        "  sudo udebug --attach myapp --c\n"
+        "  procdbg --attach myapp\n"
+        "  procdbg --attach 1234\n"
+        "  procdbg --pid 5678 --dump-stack\n"
+        "  procdbg --pid 5678 --c\n"
+        "  procdbg --file ./program.elf\n"
+        "  procdbg --name nginx --c\n"
+        "  sudo procdbg --attach myapp --c\n"
         "\nNOTES:\n"
         "  Without sudo: reads memory maps and parses binary headers.\n"
         "  With sudo:    full memory read, register access, and string extraction.\n\n";
@@ -69,13 +69,13 @@ static bool is_number(const std::string& s) {
 
 static std::string default_config_path() {
     std::vector<std::string> candidates = {
-        "udebug.conf",
-        (std::string(getenv("HOME") ? getenv("HOME") : "") + "/.config/udebug/udebug.conf"),
-        "/etc/udebug/udebug.conf"
+        "procdbg.conf",
+        (std::string(getenv("HOME") ? getenv("HOME") : "") + "/.config/procdbg/procdbg.conf"),
+        "/etc/procdbg/procdbg.conf"
     };
     for (auto& p : candidates)
         if (fs::exists(p)) return p;
-    return "udebug.conf";
+    return "procdbg.conf";
 }
 
 static void analyze_file(const std::string& path, const Config& cfg) {
@@ -183,10 +183,10 @@ int main(int argc, char* argv[]) {
     bool ok = false;
     if (by_pid) {
         Pid pid = static_cast<Pid>(std::stoul(attach_arg));
-        std::cout << "[UDEBUG] Attaching to PID " << pid << " ...\n";
+        std::cout << "[PROCDBG] Attaching to PID " << pid << " ...\n";
         ok = g_dbg->attach(pid);
     } else {
-        std::cout << "[UDEBUG] Attaching to process \"" << attach_arg << "\" ...\n";
+        std::cout << "[PROCDBG] Attaching to process \"" << attach_arg << "\" ...\n";
         ok = g_dbg->attach_by_name(attach_arg);
     }
 
@@ -233,7 +233,7 @@ int main(int argc, char* argv[]) {
         out.print_comprehensive(ci);
     }
 
-    std::cout << "\n[UDEBUG] Done. Detaching...\n";
+    std::cout << "\n[PROCDBG] Done. Detaching...\n";
     g_dbg->detach();
     return 0;
 }

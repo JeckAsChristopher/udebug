@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2025 UDEBUG Contributors
+// Copyright (c) 2025 PROCDBG Contributors
 
-#include "udebug.h"
+#include "procdbg.h"
 #include <iostream>
 #include <iomanip>
 #include <sstream>
@@ -53,7 +53,7 @@ std::string Output::fmt_ms(uint64_t ms) const {
 
 void Output::print_banner() {
     std::cout << col(ANSI_CYAN) << col(ANSI_BOLD)
-              << "\nUDEBUG v" UDEBUG_VERSION " - Ultimate Debugger"
+              << "\nPROCDBG v" PROCDBG_VERSION " - Ultimate Debugger"
               << "  [ELF / PE / Mach-O]\n"
               << col(ANSI_RESET) << "\n";
 }

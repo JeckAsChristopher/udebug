@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2025 UDEBUG Contributors
+// Copyright (c) 2025 PROCDBG Contributors
 
-#ifdef UDEBUG_LINUX
+#ifdef PROCDBG_LINUX
 
 #include "lin_debugger.h"
 #include <fstream>

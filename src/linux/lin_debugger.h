@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2025 UDEBUG Contributors
+// Copyright (c) 2025 PROCDBG Contributors
 
 #pragma once
-#include "udebug.h"
+#include "procdbg.h"
 #include <sys/types.h>
 
 class LinuxDebugger : public IDebugger {

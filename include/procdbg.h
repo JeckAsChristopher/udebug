@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2025 UDEBUG Contributors
+// Copyright (c) 2025 PROCDBG Contributors
 
 #pragma once
 
@@ -11,13 +11,13 @@
 #include <functional>
 #include <memory>
 
-#if !defined(UDEBUG_WINDOWS) && !defined(UDEBUG_MACOS) && !defined(UDEBUG_LINUX)
+#if !defined(PROCDBG_WINDOWS) && !defined(PROCDBG_MACOS) && !defined(PROCDBG_LINUX)
   #if defined(_WIN32) || defined(_WIN64)
-    #define UDEBUG_WINDOWS
+    #define PROCDBG_WINDOWS
   #elif defined(__APPLE__)
-    #define UDEBUG_MACOS
+    #define PROCDBG_MACOS
   #elif defined(__linux__)
-    #define UDEBUG_LINUX
+    #define PROCDBG_LINUX
   #endif
 #endif
 

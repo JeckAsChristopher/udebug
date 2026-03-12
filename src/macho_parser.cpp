@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2025 UDEBUG Contributors
+// Copyright (c) 2025 PROCDBG Contributors
 
-#include "udebug.h"
+#include "procdbg.h"
 #include <fstream>
 #include <cstring>
 #include <iostream>

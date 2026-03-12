@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2025 UDEBUG Contributors
+// Copyright (c) 2025 PROCDBG Contributors
 
 #pragma once
-#include "udebug.h"
+#include "procdbg.h"
 
-#ifdef UDEBUG_MACOS
+#ifdef PROCDBG_MACOS
 #include <mach/mach.h>
 
 class MacDebugger : public IDebugger {

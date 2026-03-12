@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2025 UDEBUG Contributors
+// Copyright (c) 2025 PROCDBG Contributors
 
 #pragma once
-#include "udebug.h"
+#include "procdbg.h"
 
-#ifdef UDEBUG_WINDOWS
+#ifdef PROCDBG_WINDOWS
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include <windows.h>

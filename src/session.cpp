@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2025 UDEBUG Contributors
+// Copyright (c) 2025 PROCDBG Contributors
 
-#include "udebug.h"
+#include "procdbg.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -57,7 +57,7 @@ Config load_config(const std::string& path) {
         else if (key == "min_string_len") cfg.min_string_len = std::stoi(val);
         else if (key == "output_file")    cfg.output_file    = val;
         else
-            std::cerr << "[udebug.conf:" << lineno << "] Unknown key: " << key << "\n";
+            std::cerr << "[procdbg.conf:" << lineno << "] Unknown key: " << key << "\n";
     }
     return cfg;
 }
